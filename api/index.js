@@ -9,20 +9,22 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const multer  = require('multer');
 const fs = require('fs');
+require('dotenv').config();
 
 
 const uploadMiddleware = multer({ dest: 'uploads/' })
 
 
 const salt = bcrypt.genSaltSync(10);
-const secret = 'asfrjj3fj4jf9j5n8fj49f490fk4i4f94f9r53wdf6u8';
+const secret = process.env.SECRET_KEY;
 
 app.use(cors({credentials:true, origin:'http://localhost:5173'}));
 app.use(express.json());
 app.use(cookieParser())
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect('mongodb+srv://okoriemmadu:OmjeVfXvpx1u6zYL@cluster0.kfdiidv.mongodb.net/?retryWrites=true&w=majority', {
+const url = process.env.DATABASE_URL;
+mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
