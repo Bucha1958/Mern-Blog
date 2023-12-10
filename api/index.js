@@ -113,6 +113,3 @@ app.get('/post/:id', async (req, res) => {
 
 app.listen(4000);
 
-// OmjeVfXvpx1u6zYL
-
-// mongodb+srv://okoriemmadu:ysyWJcciO0NyWi6r@cluster0.kfdiidv.mongodb.net/?retryWrites=true&w=majority
